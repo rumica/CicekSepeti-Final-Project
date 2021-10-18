@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = Styled.div`
     display: flex;
@@ -33,27 +34,33 @@ const CardContainer = Styled.div `
 
 function Products () {
 
-  const [products, setProducts] = useState([])
+    const [items, setItems] = useState([])
 
-  useEffect(()=>{
-    fetch('http://bootcampapi.techcs.io/api/fe/v1/product/all')
-    .then((response) => response.json())
-    .then(response => setProducts(response))
-  }, [])
+    useEffect(() => {
+        fetchItems();
+    }, [])
 
-
+    const fetchItems = async () => {
+        const data = await fetch ('https://bootcampapi.techcs.io/api/fe/v1/product/all')
+        const items = await data.json();
+        console.log(items)
+        setItems(items)
+    }
+  
 
   return (
     <>
         <Container>
-            {products.map(product => {
+            {items.map(item => {
                 return (
                     <CardContainer>
-                        <div className="card-info">
-                            <img src={product.imageUrl} alt="" />
-                                <h2 className="brand">{product.brand.title}</h2>
-                                <h2 className="color">Renk: {product.color.title}</h2>
-                            <h4>{product.price}</h4>
+                        <div key={item.id} className="card-info">
+                            <Link to={`/product-detail-page/${item.id}`}>
+                            <img src={item.imageUrl} alt="" />
+                                <h2 className="brand">{item.brand.title}</h2>
+                                <h2 className="color">Renk: {item.color.title}</h2>
+                            <h4>{item.price}</h4>
+                            </Link>
                         </div>
                     </CardContainer>
                 )

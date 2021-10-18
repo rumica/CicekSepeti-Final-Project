@@ -24,24 +24,23 @@ const Categories = Styled.div `
         background: none;
         cursor: pointer;
         color: #525252;
+        padding-bottom: 7px;
         &:focus {
             color: #4b9ce2;
+            border-bottom: 1px solid #4b9ce2;
         }
     }
 `
-
 
 function Main() {
 
     const [categories, setCategories] = useState([]);
 
     useEffect(()=>{
-        fetch('http://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
+        fetch('https://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
         .then((response) => response.json())
         .then(response => setCategories(response))
       }, [])
-    
-    console.log(categories)
 
 
     return (
