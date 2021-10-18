@@ -22,6 +22,7 @@ const CardContainer = Styled.div `
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      
         .brand {
             font-size: 15px;
         }
@@ -53,16 +54,16 @@ function Products () {
         <Container>
             {items.map(item => {
                 return (
-                    <CardContainer>
-                        <div key={item.id} className="card-info">
-                            <Link to={`/product-detail-page/${item.id}`}>
-                            <img src={item.imageUrl} alt="" />
-                                <h2 className="brand">{item.brand.title}</h2>
-                                <h2 className="color">Renk: {item.color.title}</h2>
-                            <h4>{item.price}</h4>
-                            </Link>
-                        </div>
-                    </CardContainer>
+                    <Link to={`/product/${item.id}`}>
+                        <CardContainer>
+                            <div key={item.id} className="card-info">
+                                <img src={item.imageUrl} alt="" />
+                                    <h2 className="brand">{item.brand.title}</h2>
+                                    <h2 className="color">Renk: {item.color.title}</h2>
+                                <h4>{item.price}</h4>
+                            </div>
+                        </CardContainer>
+                    </Link>
                 )
             })}
         </Container>

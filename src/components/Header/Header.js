@@ -10,6 +10,7 @@ height: 80px;
 display: flex;
 justify-content: space-around;
 align-items: center;
+margin-bottom: 20px;
 .logo img{
   width: 129px;
   height: 42px;
@@ -50,7 +51,7 @@ function Header() {
        <Container>
            <div className="logo"><img src={logo} alt="" /></div>
            <div className="header-buttons">
-               <Link>
+               <Link to="/add-product">
                     <button className="add-product-btn">Ürün Ekle</button>
                </Link>
                <Link to="/login-page">
