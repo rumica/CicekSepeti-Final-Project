@@ -41,6 +41,7 @@ export const FormContainer = Styled.div`
             border-radius: 8px;
             font-size: 15px;
             cursor: pointer;
+            font-weight: 600;
             &:hover {
                 background-color: #91c2ed; 
             }

@@ -25,6 +25,7 @@ const Categories = Styled.div `
         cursor: pointer;
         color: #525252;
         padding-bottom: 7px;
+        font-weight: 900;
         &:focus {
             color: #4b9ce2;
             border-bottom: 1px solid #4b9ce2;

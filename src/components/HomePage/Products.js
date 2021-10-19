@@ -1,14 +1,10 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import Styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = Styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    margin: 20px 80px;
+   
+    margin: 20px 49px;
 `
 
 const CardContainer = Styled.div `
@@ -18,54 +14,58 @@ const CardContainer = Styled.div `
     margin-bottom: 15px;
     padding: 10px;
     border-radius: 8px;
+
     .card-info{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-      
-        .brand {
-            font-size: 15px;
+        .brand-color {
+            display: flex;
+            justify-content: space-between;
+            p {
+                font-size: 15px;
+                margin-top: 10px;
+                font-weight: 900;
+            }
+            .brand {
+                color: #4B9CE2;
+            }
+            .color {
+                color: #3E3E3E;
+                span {
+                    font-weight: 300;
+                }
+            }
         }
-        .color {
-            font-size: 15px;
+        h4 {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #3E3E3E;
         }
     }
 `
 
 
-function Products () {
+function Products ({brand, price, color, image, status, desc, id}) {
 
-    const [items, setItems] = useState([])
-
-    useEffect(() => {
-        fetchItems();
-    }, [])
-
-    const fetchItems = async () => {
-        const data = await fetch ('https://bootcampapi.techcs.io/api/fe/v1/product/all')
-        const items = await data.json();
-        console.log(items)
-        setItems(items)
-    }
   
 
+  
   return (
     <>
-        <Container>
-            {items.map(item => {
-                return (
-                    <Link to={`/product/${item.id}`}>
-                        <CardContainer>
-                            <div key={item.id} className="card-info">
-                                <img src={item.imageUrl} alt="" />
-                                    <h2 className="brand">{item.brand.title}</h2>
-                                    <h2 className="color">Renk: {item.color.title}</h2>
-                                <h4>{item.price}</h4>
+        <Container>    
+            <Link to={`/product/${id}`}>
+                <CardContainer key={id}>
+                    <div  className="card-info">
+                        <img src={image} alt="" />
+                            <div className="brand-color">
+                                <p className="brand">{brand}</p>
+                                <p className="color">Renk: <span>{color}</span></p>
                             </div>
-                        </CardContainer>
-                    </Link>
-                )
-            })}
+                        <h4>{price} TL</h4>
+                    </div>
+                </CardContainer>
+            </Link>
         </Container>
     </>
   )

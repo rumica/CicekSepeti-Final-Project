@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { NavbarBrand } from 'react-bootstrap';
+import Header from '../Header/Header'
 import { useParams } from 'react-router-dom';
 
 
-function ProductDetail () {
+function ProductDetail ({ brand, status, color, price}) {
 
     const { id } = useParams();
     const [item, setItem] = useState({})
@@ -22,11 +22,13 @@ function ProductDetail () {
 
   return (
     <>
-        <div>
-            <h2>Marka: {item.brand.title}</h2>
-            <h2>Renk: {item.color.title}</h2>
-            {/*title kısmını okuyamıyor*/}
-        </div>
+        <Header />
+            <div>
+                <h4>Marka: {brand}</h4>
+                <h4>Renk: {color}</h4>
+                <h4>Kullanım Durumu: {status}</h4>
+                <h2>{price} TL</h2>     
+            </div>
     </>
   )
 }
