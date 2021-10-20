@@ -1,17 +1,19 @@
 import React from 'react'
 import Header from '../Header/Header'
 import Main from './Main'
+import CategoryList from './CategoryList'
 import ProductList from './ProductList'
 
-function IndexPage() {
+function HomePage() {
     return (
         <>
             <Header />
             <Main />
+            <CategoryList />
             <ProductList />
 
         </>
     )
 }
 
-export default IndexPage;
+export default HomePage;

@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
-import Products from "./Products";
 import ProductDetail from "../ProductDetailPage/ProductDetail";
 import { ProductContext } from "../../context/ProductContext";
 
 
-const ProductList = () => {
+const MapProductDetail = () => {
 
     const [items, setItems] = useContext(ProductContext);
 
@@ -12,7 +11,7 @@ const ProductList = () => {
         <>
             <div style={{display: "flex", alignItmes: "center", flexWrap: "wrap", justifyContent: "space-around"}}>
                 {items.map(item => (
-                    <Products 
+                    <ProductDetail 
                     data={item}
                     brand={item.brand.title}
                     price={item.price}
@@ -29,4 +28,4 @@ const ProductList = () => {
     );
 }
 
-export default ProductList;
+export default MapProductDetail;

@@ -9,10 +9,9 @@ export const ProductProvider = (props) => {
         fetchItems();
     }, [])
 
-    const fetchItems = async () => {
+        const fetchItems = async () => {
         const data = await fetch ('https://bootcampapi.techcs.io/api/fe/v1/product/all')
         const items = await data.json();
-        console.log(items)
         setItems(items)
     }
 
@@ -22,3 +21,4 @@ export const ProductProvider = (props) => {
         </ProductContext.Provider>
     );
 }
+

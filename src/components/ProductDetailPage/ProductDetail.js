@@ -4,10 +4,11 @@ import Header from '../Header/Header'
 import { useParams } from 'react-router-dom';
 
 
-function ProductDetail ({ brand, status, color, price}) {
+function ProductDetail ({ brand ,status, color, price} ) {
 
     const { id } = useParams();
-    const [item, setItem] = useState({})
+    const [item, setItem] = useState({});
+    
 
     useEffect(() => {
         fetchItem();
@@ -20,14 +21,21 @@ function ProductDetail ({ brand, status, color, price}) {
         setItem(item)
     }
 
+ 
   return (
     <>
         <Header />
-            <div>
-                <h4>Marka: {brand}</h4>
-                <h4>Renk: {color}</h4>
-                <h4>Kullanım Durumu: {status}</h4>
-                <h2>{price} TL</h2>     
+            <div key={id}>
+                <div style={{display: "flex", flexDirection: "column", justifyContent: "space-between"}}>
+                    <h4>Marka: {id}</h4>
+                    <h4>Renk: </h4>
+                    <h4>Kullanım Durumu: {status}</h4>
+                </div>
+                <h2>{price} TL</h2>
+                <button>Satın Al</button>  
+                <button>Teklif Ver</button>
+                <h3>Açıklama</h3>
+                <p>lorem ipsum</p>  
             </div>
     </>
   )
