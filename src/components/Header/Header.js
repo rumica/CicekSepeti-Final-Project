@@ -49,7 +49,9 @@ margin-bottom: 20px;
 function Header() {
     return (
        <Container>
-           <div className="logo"><img src={logo} alt="" /></div>
+           <Link to="/">
+                <div className="logo"><img src={logo} alt="" /></div>
+           </Link>
            <div className="header-buttons">
                <Link to="/add-product">
                     <button className="add-product-btn">Ürün Ekle</button>

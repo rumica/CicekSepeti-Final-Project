@@ -6,7 +6,7 @@ import RegisterPage from './RegisterPage/RegisterPage'
 import LoginPage from './LoginPage/LoginPage'; 
 import { CategoryProvider } from '../context/CategoryContext';
 import { ProductProvider } from '../context/ProductContext';
-import ProductDetail from './ProductDetailPage/ProductDetail';
+import ProductDetailPage from './ProductDetailPage/ProductDetailPage';
 import '../css/Style.css'
 
 
@@ -19,7 +19,7 @@ function App() {
             <Route path="/" exact component={HomePage} />
             <Route path="/register-page" exact component={RegisterPage} />
             <Route path="/login-page" exact component={LoginPage} />
-            <Route path="/product/:id" exact component={ProductDetail} />
+            <Route path="/product/:id" exact component={ProductDetailPage} />
             <Route path="/add-product/" exact component={AddProduct} />
           </Switch>
         </Router>

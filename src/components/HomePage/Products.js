@@ -3,8 +3,8 @@ import Styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = Styled.div`
-   
-    margin: 20px 49px;
+    display: flex;
+   justify-content: space-around;
 `
 
 const CardContainer = Styled.div `
