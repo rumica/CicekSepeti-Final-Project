@@ -4,6 +4,10 @@ import { FormContainer } from '../RegisterPage/ScRegisterForm';
 
 function LoginForm({Login, error}) {
 
+  if (sessionStorage.getItem("token") !== null) {
+    window.location.href = '/';
+  }
+
   let history = useHistory(); 
   const [info, setInfo] = useState({
     email:"",
@@ -12,14 +16,39 @@ function LoginForm({Login, error}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Login(info);
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({
+      "email": `${info.email}`,
+      "password": `${info.password}`
+
+      });
+
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+  fetch("https://bootcampapi.techcs.io/api/fe/v1/authorization/signin", requestOptions)
+    .then(response => response.json())
+    .then(result => result.hasOwnProperty('access_token') ? sessionStorage.setItem('token', result.access_token): "")
+    .catch(error => console.log('error', error));
+
+    setTimeout(()=> {
+      if (sessionStorage.getItem("token") !== null) {
+        window.location.href = '/';
+      }
+    }, 500)
+
   }
 
   const handleClick = () => {
     history.push("/register-page")
   }
-
-
   return (
       <div>
           <form onSubmit={handleSubmit}>
@@ -31,7 +60,7 @@ function LoginForm({Login, error}) {
                       <input 
                       type="email" 
                       name="email" 
-                      id="email"  
+                      id="email"
                       onChange={e => setInfo({...info, email: e.target.value})} value={info.email}/>
                   </div>
                   <div className="form-item">
@@ -39,7 +68,7 @@ function LoginForm({Login, error}) {
                       <input 
                       type="password" 
                       name="password" 
-                      id="password"  
+                      id="password"
                       onChange={e => setInfo({...info, password: e.target.value})} value={info.password}/>
                   </div>
                   <input type="submit" value="Giriş" />

@@ -17,7 +17,7 @@ function LoginItem() {
 
   const Login = info => {
     console.log(info)
-    if (info.email == testUser.email && info.password == testUser.password) {
+    if (info.email === testUser.email && info.password === testUser.password) {
       console.log("Success!")
       setUser({
         email: info.email
@@ -28,16 +28,11 @@ function LoginItem() {
     }
   };
 
-
-
-  return (
-
-    
+   return (  
          <LoginForm  
          Login={Login}
          error={error}
-         />
-    
+         />   
   );
 }
 

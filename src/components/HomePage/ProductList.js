@@ -10,9 +10,10 @@ const ProductList = () => {
 
     return(
         <>
-            <div style={{display: "flex", alignItmes: "center", flexWrap: "wrap", justifyContent: "space-around"}}>
+            <div style={{display: "flex", alignItmes: "center", flexWrap: "wrap", justifyContent: "space-around", margin:"20px 70px"}}>
                 {items.map(item => (
                     <Products 
+                    key={item.id}
                     data={item}
                     brand={item.brand.title}
                     price={item.price}
@@ -21,7 +22,6 @@ const ProductList = () => {
                     desc={item.description}
                     status={item.status.title}
                     id={item.id}
-                    
                     />
                 ))}
             </div>

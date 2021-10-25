@@ -67,9 +67,6 @@ const Container = Styled.div`
         
 }
 `
-
-
-
 function ProductDetail () {
 
     const { id } = useParams();

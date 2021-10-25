@@ -47,6 +47,9 @@ margin-bottom: 20px;
 `
 
 function Header() {
+
+    let isLoggedIn = sessionStorage.getItem("token") !== null;
+
     return (
        <Container>
            <Link to="/">
@@ -57,7 +60,7 @@ function Header() {
                     <button className="add-product-btn">Ürün Ekle</button>
                </Link>
                <Link to="/login-page">
-                    <button className="sign-in-btn">Giriş Yap</button>
+                    <button className="sign-in-btn">{isLoggedIn ? 'Çevrimiçi ✅' : 'Giriş Yap'}</button>
                </Link>
            </div>
        </Container>

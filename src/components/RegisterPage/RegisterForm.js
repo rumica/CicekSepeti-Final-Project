@@ -4,6 +4,10 @@ import { FormContainer } from './ScRegisterForm';
 
 function RegisterForm({Login, error}) {
 
+  if (sessionStorage.getItem("token") !== null) {
+    window.location.href = '/';
+  }
+
   let history = useHistory(); 
   const [info, setInfo] = useState({
     email:"",
@@ -12,13 +16,31 @@ function RegisterForm({Login, error}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Login(info);
+
+    let myHeaders = new Headers();
+
+    myHeaders.append("Content-Type", "application/json");
+    let raw = JSON.stringify({
+      "email": `${info.email}`,
+      "password": `${info.password}`
+      });
+
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+  fetch("https://bootcampapi.techcs.io/api/fe/v1/authorization/signup", requestOptions)
+    .then(response => response.json())
+    .then(result => result.hasOwnProperty('access_token') ? handleClick(): alert(`${result.message[0]}`))
+    .catch(error => console.log('error', error));
   }
 
   const handleClick = () => {
     history.push("/login-page")
   }
-
 
   return (
       <div>

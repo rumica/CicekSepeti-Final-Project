@@ -20,8 +20,7 @@ const CategoryList = () => {
                 {categories.map(category => (
                     <Category
                     category={category.title}
-                    id={category.id}
-                    
+                    key={category.id}
                     />
                 ))}
             </Container>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext }from 'react'
-import { ProductContext } from '../../context/ProductContext';
+import { CategoryContext } from '../../context/CategoryContext';
 import Styled from 'styled-components'
 
 const Container = Styled.div`
@@ -9,7 +9,7 @@ const Container = Styled.div`
     justify-content:flex-start;
     align-items: flex-start;
     width: 800px;
-    height: 600px; 
+    height: 750px; 
     background-color: #ffff;
     border-radius: 8px;
     color: #525252;
@@ -32,8 +32,10 @@ const Container = Styled.div`
         height: 100px;
     }
     .option-container {
-        display: flex;
-        flex-wrap: wrap;
+        form{
+            display: flex;
+            flex-direction: column;
+        }
         select {
             width: 250px;
             height: 45px;
@@ -45,23 +47,24 @@ const Container = Styled.div`
             padding: 10px;
         }
     }
+    button {
+        background-color: #4B9CE2;
+        color: #ffff;
+        width: 315px;
+        height: 45px;
+        border-radius: 8px;
+        border: none;
+        margin-top: 100px;
+    }
 
 `
 
 function AddProductDetail() {
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useContext(CategoryContext)
     const [brands, setBrands] = useState([]);
     const [colors, setColors] = useState([]);
     const [statuses, setStatuses] = useState ([]);
-    const [items, setItems] = useContext(ProductContext)
-
-    
-    useEffect(()=>{
-        fetch('https://bootcampapi.techcs.io/api/fe/v1/detail/category/all')
-        .then((response) => response.json())
-        .then(response => setCategories(response))
-      }, [])
 
       useEffect(()=>{
         fetch('https://bootcampapi.techcs.io/api/fe/v1/detail/brand/all')
@@ -81,31 +84,25 @@ function AddProductDetail() {
         .then(response => setStatuses(response))
       }, [])
 
-      const updateBrand = (e) => {
-            setBrands(e.target.value)
-      }
-
-      const addProduct = e => {
-          e.preventDefault()
-          console.log(items)
-      }
-
-
+      
     return (
         <Container>
             <h3>Ürün Detayları</h3>
-            <label for="name">Ürün Adı</label>
+            <label htmlFor="name">Ürün Adı</label>
             <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            placeholder="Örnek: Iphone 12 Pro Max"
+                type="text" 
+                id="name" 
+                name="name" 
+                placeholder="Örnek: Iphone 12 Pro Max"
             />
-            <label for="name">Açıklama</label>
-            <textarea name="name" placeholder="Ürün açıklamasını girin."></textarea>
+            <label htmlFor="name">Açıklama</label>
+            <textarea 
+                name="name" 
+                placeholder="Ürün açıklamasını girin.">
+            </textarea>
             <div className="option-container">
-                <form onSubmit={addProduct}>
-                    <label for="category">Kategori</label>
+                <form>
+                    <label htmlFor="category">Kategori</label>
                     <select id="category" name="category">
                     {categories.map(category => {
                         return (
@@ -114,8 +111,8 @@ function AddProductDetail() {
                     })}
                     </select>
 
-                    <label for="brand">Marka</label>
-                    <select id="brand" name="brand" value={brands} onChange={updateBrand}>
+                    <label htmlFor="brand">Marka</label>
+                    <select id="brand" name="brand">
                     {brands.map(brand => {
                         return (
                             <option value={brand.title}>{brand.title}</option>
@@ -123,7 +120,7 @@ function AddProductDetail() {
                     })}
                     </select>
 
-                    <label for="color">Renk</label>
+                    <label htmlFor="color">Renk</label>
                     <select id="color" name="color">
                     {colors.map(color => {
                         return (
@@ -132,7 +129,7 @@ function AddProductDetail() {
                     })}
                     </select>
 
-                    <label for="status">Kullanım Durumu</label>
+                    <label htmlFor="status">Kullanım Durumu</label>
                     <select id="status" name="status">
                     {statuses.map(status => {
                         return (
