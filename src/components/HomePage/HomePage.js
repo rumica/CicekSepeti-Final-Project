@@ -11,7 +11,6 @@ function HomePage() {
             <Main />
             <CategoryList />
             <ProductList />
-
         </>
     )
 }

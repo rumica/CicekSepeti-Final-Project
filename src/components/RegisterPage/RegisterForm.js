@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormContainer } from './ScRegisterForm';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterForm({Login, error}) {
 
@@ -32,9 +34,11 @@ function RegisterForm({Login, error}) {
       redirect: 'follow'
     };
 
+  const notify = () => toast.warn("E-mailiniz veya şifreniz en az 8 karakter içermelidir!");
+
   fetch("https://bootcampapi.techcs.io/api/fe/v1/authorization/signup", requestOptions)
     .then(response => response.json())
-    .then(result => result.hasOwnProperty('access_token') ? handleClick(): alert(`${result.message[0]}`))
+    .then(result => result.hasOwnProperty('access_token') ? handleClick() : notify())
     .catch(error => console.log('error', error));
   }
 
@@ -44,9 +48,9 @@ function RegisterForm({Login, error}) {
 
   return (
       <div>
-        {(error != "") ? (<div style={{position: "absolute", top: "50px", right: "10px", backgroundColor: "#ffe5e5", padding: "18px", borderRadius: "8px", boxShadow: "0px 3px 12px #1E36482E"}}>{error}</div>) : ""}
           <form onSubmit={handleSubmit}>
               <FormContainer>
+              <ToastContainer />
                   <h2>Üye Ol</h2>
                   <p>Fırsatlardan yararlanmak için üye ol!</p>
                   <div className="form-item">

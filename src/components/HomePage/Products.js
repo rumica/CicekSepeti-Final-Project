@@ -45,10 +45,8 @@ const CardContainer = Styled.div `
     }
 `
 
-
 function Products ({ brand, price, color, image, status, desc, id, data }) {
 
-  
   return (
     <>
         <Container>    

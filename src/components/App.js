@@ -4,9 +4,10 @@ import AddProduct from './AddProductPage/AddProduct';
 import HomePage from './HomePage/HomePage';
 import RegisterPage from './RegisterPage/RegisterPage'
 import LoginPage from './LoginPage/LoginPage'; 
+import ProductDetailPage from './ProductDetailPage/ProductDetailPage';
+import Profile from './ProfilePage/Profile';
 import { CategoryProvider } from '../context/CategoryContext';
 import { ProductProvider } from '../context/ProductContext';
-import ProductDetailPage from './ProductDetailPage/ProductDetailPage';
 import '../css/Style.css'
 
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login-page" exact component={LoginPage} />
             <Route path="/product/:id" exact component={ProductDetailPage} />
             <Route path="/add-product/" exact component={AddProduct} />
+            <Route path="/profile-page/" exact component={Profile} />
           </Switch>
         </Router>
         </CategoryProvider>

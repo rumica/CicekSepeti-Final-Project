@@ -3,8 +3,6 @@ import RegisterForm from './RegisterForm';
 
 function RegisterItem() {
 
- 
-
   const [user, setUser] = useState({
     email: ""
   });
@@ -24,16 +22,12 @@ function RegisterItem() {
     }
   };
 
-
-
   return (
-
     
-         <RegisterForm  
+        <RegisterForm  
          Login={Login}
          error={error}
-         />
-    
+         />   
   );
 }
 

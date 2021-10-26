@@ -22,8 +22,7 @@ const Main = () => {
                 <div className="banner">
                     <img src={bannerImg} alt="" />
                 </div>
-            </Banner>
-              
+            </Banner>            
         </>
     )
 }

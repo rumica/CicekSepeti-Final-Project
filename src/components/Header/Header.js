@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import logo from '../../assets/logo.png';
 import Styled from 'styled-components';
 
@@ -48,8 +49,14 @@ margin-bottom: 20px;
 
 function Header() {
 
-    let isLoggedIn = sessionStorage.getItem("token") !== null;
+    let isLogged = sessionStorage.getItem("token") !== null;
 
+    let history = useHistory(); 
+
+    const handleClick = () => {
+       isLogged ? history.push("/profile-page") : history.push("/login-page")
+      }
+   
     return (
        <Container>
            <Link to="/">
@@ -59,9 +66,7 @@ function Header() {
                <Link to="/add-product">
                     <button className="add-product-btn">Ürün Ekle</button>
                </Link>
-               <Link to="/login-page">
-                    <button className="sign-in-btn">{isLoggedIn ? 'Çevrimiçi ✅' : 'Giriş Yap'}</button>
-               </Link>
+               <button onClick={handleClick} className="sign-in-btn">{isLogged ? 'Hesabım ✅' : 'Giriş Yap'}</button>       
            </div>
        </Container>
     )

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormContainer } from '../RegisterPage/ScRegisterForm';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginForm({Login, error}) {
 
@@ -33,9 +35,12 @@ function LoginForm({Login, error}) {
       redirect: 'follow'
     };
 
+  const notify = () => toast.error("E-mailiniz veya şifreniz hatalı!", {theme: "colored"});
+
+
   fetch("https://bootcampapi.techcs.io/api/fe/v1/authorization/signin", requestOptions)
     .then(response => response.json())
-    .then(result => result.hasOwnProperty('access_token') ? sessionStorage.setItem('token', result.access_token): "")
+    .then(result => result.hasOwnProperty('access_token') ? sessionStorage.setItem('token', result.access_token) : notify())
     .catch(error => console.log('error', error));
 
     setTimeout(()=> {
@@ -53,6 +58,7 @@ function LoginForm({Login, error}) {
       <div>
           <form onSubmit={handleSubmit}>
               <FormContainer>
+              <ToastContainer />
                   <h2>Giriş Yap</h2>
                   <p>Fırsatlardan yararlanmak için giriş yap!!</p>
                   <div className="form-item">

@@ -78,16 +78,22 @@ function ProductDetail () {
         setItem(item)
     }, [])
 
+    let title = `${item?.title}`
+    let brand = `${item?.brand?.title}`
+    let color = `${item?.color?.title}`
+    let status = `${item?.status?.title}`
+    let description = `${item?.description}`
+
   return (
     <>
         <Container>
             <img src={item?.imageUrl} alt="" />
             <div className="card-container">
-                    <h1>{item?.title}</h1>
+                    <h1>{title.charAt(0).toUpperCase() + title.slice(1)}</h1>
                     <div className="product-info">
-                        <h4>Marka: <span>{item?.brand?.title}</span></h4>
-                        <h4>Renk: <span>{item?.color?.title}</span></h4>
-                        <h4>Kullanım Durumu: <span>{item?.status?.title}</span></h4>
+                        <h4>Marka: <span>{brand.charAt(0).toUpperCase() + brand.slice(1)}</span></h4>
+                        <h4>Renk: <span>{color.charAt(0).toUpperCase() + color.slice(1)}</span></h4>
+                        <h4>Kullanım Durumu: <span>{status.charAt(0).toUpperCase() + status.slice(1)}</span></h4>
                     </div>               
                 <h2>{item?.price} TL</h2>
                 <div className="buttons">
@@ -95,7 +101,7 @@ function ProductDetail () {
                     <button className="offer-btn">Teklif Ver</button>
                 </div>
                 <h3>Açıklama</h3>
-                <p>{item?.description}</p>
+                <p>{description.charAt(0).toUpperCase() + description.slice(1)}</p>
             </div>
         </Container>
     </>
