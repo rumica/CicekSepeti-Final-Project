@@ -49,7 +49,7 @@ export const Container = Styled.div`
     .border {
         border: 1px dotted #B1B1B1;
         width: 500px;
-        height: 160px;
+        height: 220px;
         border-radius: 8px;
         display: flex;
         align-items: center;
@@ -60,6 +60,8 @@ export const Container = Styled.div`
             width: 84px;
             height: 50px;
             border-radius: 8px;
+            background-color: #F4F4F4;
+            cursor: pointer;
         }
     }
     button {
@@ -70,6 +72,7 @@ export const Container = Styled.div`
         border-radius: 8px;
         border: none;
         margin-top: 100px;
+        cursor: pointer;
     }
 
 `

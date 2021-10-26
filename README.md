@@ -4,7 +4,7 @@ This project was done for ÇiçekSepeti React Bootcamp.
 
 ------
 
-In this project is used React Hooks and Context API.
+In this project is used React Hooks Context API, SASS and Styled Component.
 
 ### Project Setup:
 

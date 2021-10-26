@@ -34,11 +34,11 @@ function RegisterForm({Login, error}) {
       redirect: 'follow'
     };
 
-  const notify = () => toast.warn("E-mailiniz veya şifreniz en az 8 karakter içermelidir!");
+  const notify = (result) => result.message.map((element) => toast.warn(element.charAt(0).toUpperCase() + element.slice(1)));
 
   fetch("https://bootcampapi.techcs.io/api/fe/v1/authorization/signup", requestOptions)
     .then(response => response.json())
-    .then(result => result.hasOwnProperty('access_token') ? handleClick() : notify())
+    .then(result => result.hasOwnProperty('access_token') ? handleClick() : notify(result))
     .catch(error => console.log('error', error));
   }
 

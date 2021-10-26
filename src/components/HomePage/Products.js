@@ -19,6 +19,10 @@ const CardContainer = Styled.div `
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        img{
+            width: 100%;
+            margin: 0 auto;
+        }
         .brand-color {
             display: flex;
             justify-content: space-between;
