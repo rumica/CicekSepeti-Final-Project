@@ -4,7 +4,7 @@ import { FormContainer } from '../RegisterPage/ScRegisterForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function LoginForm({Login, error}) {
+const LoginForm = ({Login, error}) => {
 
   if (sessionStorage.getItem("token") !== null) {
     window.location.href = '/';

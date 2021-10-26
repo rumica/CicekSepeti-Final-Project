@@ -47,7 +47,7 @@ margin-bottom: 20px;
 }
 `
 
-function Header() {
+const Header = () => {
 
     let isLogged = sessionStorage.getItem("token") !== null;
 

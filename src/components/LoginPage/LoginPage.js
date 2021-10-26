@@ -10,8 +10,7 @@ justify-content: space-between;
 width: 100%;
 height: 100vh;
 .login-image {
-    width: 600px;
-    height: 721px;
+    width: 38%;
 }
 .main-container {
     background-color: #fbfbfb;
@@ -30,7 +29,7 @@ height: 100vh;
 }
 `
 
-function LoginPage({ error }) {
+const LoginPage = ({ error }) => {
     return (
         
         <Container>

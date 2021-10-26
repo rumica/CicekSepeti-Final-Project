@@ -18,7 +18,7 @@ color: #525252;
 }
 `
 
-function ProfileDetail() {
+const ProfileDetail = () => {
     return (
         <Container>
             <div className="count">

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Styled from 'styled-components';
 import Category from './Category';
-import { CategoryContext } from '../../context/CategoryContext';
+import { CategoryContext } from '../../contexts/CategoryContext';
 
 const Container = Styled.div`
     margin: 25px 60px;

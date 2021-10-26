@@ -4,7 +4,7 @@ import Main from './Main'
 import CategoryList from './CategoryList'
 import ProductList from './ProductList'
 
-function HomePage() {
+const HomePage = () => {
     return (
         <>
             <Header />

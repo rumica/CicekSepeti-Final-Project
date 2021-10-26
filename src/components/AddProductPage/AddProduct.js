@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../Header/Header'
 import AddProductDetail from './AddProductDetail'
 
-function AddProduct() {
+const AddProduct = () => {
     return (
         <>
             <Header />

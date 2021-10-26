@@ -15,7 +15,7 @@ const Button = Styled.button`
         }
 `
 
-function Category({ category, id }) {
+const Category = ({ category, id }) => {
     return (
         <>          
             <Button>{category.charAt(0).toUpperCase() + category.slice(1)}</Button>       

@@ -6,10 +6,9 @@ import RegisterPage from './RegisterPage/RegisterPage'
 import LoginPage from './LoginPage/LoginPage'; 
 import ProductDetailPage from './ProductDetailPage/ProductDetailPage';
 import Profile from './ProfilePage/Profile';
-import { CategoryProvider } from '../context/CategoryContext';
-import { ProductProvider } from '../context/ProductContext';
-import '../css/Style.css'
-
+import { CategoryProvider } from '../contexts/CategoryContext';
+import { ProductProvider } from '../contexts/ProductContext';
+import '../scss/Style.scss'
 
 function App() {
   return (

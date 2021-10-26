@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterItem from './RegisterItem';
+import RegisterForm from './RegisterForm';
 import loginImage from '../../assets/login-page-image.png';
 import logo from '../../assets/logo.png';
 import Styled from 'styled-components';
@@ -10,8 +10,7 @@ justify-content: space-between;
 width: 100%;
 height: 100vh;
 .login-image {
-    width: 600px;
-    height: 721px;
+    width: 38%;
 }
 .main-container {
     background-color: #fbfbfb;
@@ -37,7 +36,7 @@ function RegisterPage({ error }) {
             <div className="main-container">
                 <img className="logo"src={logo} alt="" />
                 <div>
-                    <RegisterItem />
+                    <RegisterForm />
                 </div>
             </div>
         </Container>

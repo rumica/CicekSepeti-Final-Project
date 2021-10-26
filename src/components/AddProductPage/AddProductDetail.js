@@ -1,65 +1,9 @@
 import React, { useEffect, useState, useContext }from 'react'
-import { CategoryContext } from '../../context/CategoryContext';
-import Styled from 'styled-components'
+import { CategoryContext } from '../../contexts/CategoryContext';
+import downloadIcon from '../../assets/download.png'
+import { Container } from './ScProductDetail';
 
-const Container = Styled.div`
-    display: flex;
-    margin: 0 auto;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items: flex-start;
-    width: 800px;
-    height: 750px; 
-    background-color: #ffff;
-    border-radius: 8px;
-    color: #525252;
-    padding: 30px;
-    h3{
-        margin-bottom: 20px;
-    }
-    input, textarea {
-        width: 600px;
-        height: 45px;
-        border: none;
-        background-color: #f4f4f4;
-        border-radius: 8px;
-        outline: none;
-        padding: 10px;
-        resize: none;
-        margin-bottom: 15px;
-    }
-    textarea {
-        height: 100px;
-    }
-    .option-container {
-        form{
-            display: flex;
-            flex-direction: column;
-        }
-        select {
-            width: 250px;
-            height: 45px;
-            border: none;
-            border: none;
-            background-color: #f4f4f4;
-            border-radius: 8px;
-            outline: none;
-            padding: 10px;
-        }
-    }
-    button {
-        background-color: #4B9CE2;
-        color: #ffff;
-        width: 315px;
-        height: 45px;
-        border-radius: 8px;
-        border: none;
-        margin-top: 100px;
-    }
-
-`
-
-function AddProductDetail() {
+const AddProductDetail = () => {
 
     const [categories, setCategories] = useContext(CategoryContext)
     const [brands, setBrands] = useState([]);
@@ -137,7 +81,15 @@ function AddProductDetail() {
                         )
                     })}
                     </select>
+                    <label htmlFor="price">Fiyat</label>
+                    <input type="number" placeholder="Bir fiyat girin."/>
                 </form>
+            </div>
+            <h3>Ürün Görseli</h3>
+            <div className="border">
+                <img src={downloadIcon} alt="" />
+                <p>Sürükleyip bırakarak yükle veya</p>
+                <button className="choose-photo">Görsel Seçin</button>
             </div>
             <button>Kaydet</button>
         </Container>
